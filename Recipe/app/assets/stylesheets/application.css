@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ header {
+     background-color: #e6e6e6;
+ }
+
+ header .search-input {
+     border-top-right-radius: 0;
+     border-bottom-right-radius: 0;
+ }
+
+ header .search-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+ }
