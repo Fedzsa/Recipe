@@ -14,11 +14,6 @@
  *= require_self
  */
 
- body {
- 	margin: 0 !important;
- 	padding: 0 !important;
- }
-
  header {
      background-color: #e6e6e6;
  }
@@ -43,19 +38,20 @@
  }
 
  header .search-form {
- 	justify-content: center;;
+ 	justify-content: center;
  }
 
- nav {
+ .nav {
  	display: flex;
+ 	background-color: #007bff;
  }
 
-nav a {
+.nav a {
 	color: white;
-	padding: 3px;
+	padding: 10px 10px;
 }
 
-nav a:hover {
+.nav a:hover {
 	text-decoration: none;
 	background-color: #343a40;
 	color: white;
