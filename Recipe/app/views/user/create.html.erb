@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <form class="" action="" method="">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="title">Cím</label>
+              <input class="form-control" type="text" name="title" value="">
+            </div>
+            <div class="form-group">
+              <label for="description">Leírás</label>
+              <textarea class="form-control" name="description" rows="8" cols="80"></textarea>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="">Hozzávalók</label>
+              <input class="form-control" type="text" name="ingredient-1" value="">
+            </div>
+            <button id="plus-ingredient" class="btn btn-warning form-control" type="button" name="button">+</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(() => {
+    var i = 2;
+
+    $('#plus-ingredient').click(() => {
+      $('<div class="form-group"><input class="form-control" type="text" name="ingredient-'+i+'" value=""></div>').insertBefore($('#plus-ingredient'));
+      i++;
+    });
+  });
+</script>

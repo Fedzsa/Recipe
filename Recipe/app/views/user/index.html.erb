@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div class="row shadow p-3 border rounded">
+    <div class="col">
+      <h4>Receptjeim</h4>
+    </div>
+    <div class="col">
+      <%= link_to "Új recept", { controller: "user", action: "create", id: current_user.id }, :class=>"btn btn-success float-right" %>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card-deck">
+        <div class="card shadow">
+          <%= image_tag("not-available.jpg", :class=>"card-img-top") %>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div class="card">
+          <%= image_tag("not-available.jpg", :class=>"card-img-top") %>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div class="card">
+          <%= image_tag("not-available.jpg", :class=>"card-img-top") %>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+        <div class="card">
+          <%= image_tag("not-available.jpg", :class=>"card-img-top") %>
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
