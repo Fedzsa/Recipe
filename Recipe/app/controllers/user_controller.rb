@@ -1,7 +1,6 @@
 class UserController < ApplicationController
-  def index
-  end
+  before_action :authenticate_user!
 
-  def create
+  def index
   end
 end
