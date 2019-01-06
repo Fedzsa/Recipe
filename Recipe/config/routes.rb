@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   
   resources :user, only: [:index]
   get '/recipe/new', to: 'recipe#new'
+  get '/recipe/:id', to: 'recipe#details'
   post '/recipe', to: 'recipe#create'
 end

@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_05_112938) do
+ActiveRecord::Schema.define(version: 2019_01_06_103422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -21,20 +27,39 @@ ActiveRecord::Schema.define(version: 2019_01_05_112938) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ingredients_recips", id: false, force: :cascade do |t|
+    t.bigint "recip_id"
+    t.bigint "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_ingredients_recips_on_ingredient_id"
+    t.index ["recip_id"], name: "index_ingredients_recips_on_recip_id"
+  end
+
   create_table "recips", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "recips_ingredients", force: :cascade do |t|
+  create_table "recips_comments", id: false, force: :cascade do |t|
     t.bigint "recips_id"
-    t.bigint "ingredients_id"
+    t.bigint "comments_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ingredients_id"], name: "index_recips_ingredients_on_ingredients_id"
-    t.index ["recips_id"], name: "index_recips_ingredients_on_recips_id"
+    t.index ["comments_id"], name: "index_recips_comments_on_comments_id"
+    t.index ["recips_id"], name: "index_recips_comments_on_recips_id"
+  end
+
+  create_table "recips_users", id: false, force: :cascade do |t|
+    t.bigint "recips_id"
+    t.bigint "users_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recips_id"], name: "index_recips_users_on_recips_id"
+    t.index ["users_id"], name: "index_recips_users_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
