@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col">
             <h2><%= @recipe.name %></h2>
+            <%= image_tag("not-available.jpg", :class=>"card-img-top") %>
         </div>
         <div class="col">
             <h5>Hozzávalók</h5>
@@ -14,7 +15,35 @@
     </div>
     <div class="row">
         <div class="col">
+            <h5>Leírás</h5>
             <p><%= @recipe.description %></p>
         </div>
     </div>
+
+    <div class="row mt-5">
+		<div class="col">
+			<h3>Kommentek</h3>
+		</div>
+	</div>
+
+    <div class="row mt-2">
+		<div class="col">
+			<form action="/recipe/<%= @recipe.id %>/comment" method="post">
+                <textarea class="form-control" name="comment"></textarea>
+                <input class="btn btn-primary mt-1 float-right" type="submit" value="Komment"/>
+			</form>
+		</div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col">
+            <% @recipe.comments.each do |comment| %>
+                <div class="shadow p-3">
+                    <h6><%= comment.user.username %></h6>
+                    <p><%= comment.comment %></p>
+                    <small><%= comment.created_at %></small>
+                </div>
+            <% end %>
+		</div>
+	</div>
 </div>

@@ -4,13 +4,14 @@ class RecipeController < ApplicationController
 
     def details
         @recipe = Recip.find(params[:id])
+        puts @recipe.comments
     end
 
     def new
     end
     
     def create
-        recipe = Recip.new(:name => params['title'], :description => params['description'], :user_id => current_user.id)
+        recipe = Recip.new(:name => params['title'], :description => params['description'], :foodtype => params['type'])
         
         i = 1
         while params.has_key?("ingredient-#{i}")
@@ -19,8 +20,18 @@ class RecipeController < ApplicationController
             i+=1
         end
 
+        recipe.user = current_user
+
         recipe.save
 
         redirect_to :controller => 'user', :action => 'index'
+    end
+
+    def addcomment
+        comment = Comment.new(:comment => params['comment'])
+        comment.recips << Recip.find(params[:id])
+        comment.user = current_user
+        comment.save
+        redirect_to :controller => 'recipe', :action => 'details', :id => params[:id]
     end
 end

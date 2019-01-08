@@ -18,7 +18,7 @@
             <h5 class="card-title"><a href="/recipe/<%= recipe.id %>"><%= recipe.name %></a></h5>
           </div>
           <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+            <small class="text-muted"><%= current_user.username %> receptje</small>
           </div>
         </div>
         <% end %>
