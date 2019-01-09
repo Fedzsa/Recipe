@@ -30,7 +30,7 @@
               <%= link_to "Bejelentkezés", { controller: "devise/sessions", action: "new" }, :class=>"btn btn-outline-primary" %>
               <%= link_to "Regisztráció", { controller: "devise/registrations", action: "new"}, :class=>"btn btn-outline-primary" %>
             <% else %>
-              <%= link_to current_user.username, { controller: "user", action: "index" }, :class=>"btn btn-outline-primary" %>
+              <%= link_to(current_user.username, { controller: "user", action: "index" }, :class=>"btn btn-outline-primary") %>
               <%= link_to("Kijelentkezés", { controller: "devise/sessions", action: "destroy" }, method: :delete, :class=>"btn btn-outline-primary") %>
             <% end %>
           </div>
