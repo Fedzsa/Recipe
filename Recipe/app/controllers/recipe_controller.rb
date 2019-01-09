@@ -13,7 +13,6 @@ class RecipeController < ApplicationController
     def create
         recipe = Recip.new(:name => params['title'], :description => params['description'], :foodtype => params['type'])
         recipe.image = params['picture']
-        puts recipe.image
 
         i = 1
         while params.has_key?("ingredient-#{i}")
