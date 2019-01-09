@@ -22,7 +22,7 @@ class RecipeController < ApplicationController
             i+=1
         end
 
-        recipe.user = current_user
+        recipe.user = User.find(current_user.id)
 
         recipe.save
 
