@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/recipe/:id', to: 'recipe#details'
   post '/recipe', to: 'recipe#create'
   post '/recipe/:id/comment', to: 'recipe#addcomment'
+
 end
