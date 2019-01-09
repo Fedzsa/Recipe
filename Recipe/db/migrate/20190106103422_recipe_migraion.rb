@@ -30,5 +30,6 @@ class RecipeMigraion < ActiveRecord::Migration[5.2]
       t.belongs_to :comment, index: true
       t.timestamps
     end
+
   end
 end
