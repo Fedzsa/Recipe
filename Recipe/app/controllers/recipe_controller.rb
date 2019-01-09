@@ -4,7 +4,6 @@ class RecipeController < ApplicationController
 
     def details
         @recipe = Recip.find(params[:id])
-        puts @recipe.comments
     end
 
     def new
