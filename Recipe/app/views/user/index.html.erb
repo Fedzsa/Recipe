@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <div class="row shadow p-3 border rounded">
     <div class="col">
       <h4>Receptjeim</h4>
@@ -9,7 +9,7 @@
   </div>
   <div class="row mt-5">
     <div class="col">
-      <div class="card-deck">
+      <div class="card-columns">
 
         <% @recipes.each do |recipe| %>
         <div class="card shadow">
@@ -19,6 +19,10 @@
           </div>
           <div class="card-footer">
             <small class="text-muted"><%= recipe.user.username %> receptje</small>
+            <div class="float-right">
+              <%= link_to "", { controller: "recipe", action: "edit", id: recipe.id }, :class=>"btn btn-warning fas fa-pen" %>
+              <%= link_to "", { controller: "recipe", action: "delete", id: recipe.id }, method: :delete, :class=>"btn btn-danger fas fa-times" %>
+            </div>
           </div>
         </div>
         <% end %>

@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row">
         <div class="col">
             <h2><%= @recipe.name %></h2>
@@ -39,11 +39,26 @@
         <div class="col">
             <% @recipe.comments.each do |comment| %>
                 <div class="shadow p-3">
+                    <% if current_user.id == @recipe.user.id %>
+                        <div class="float-right">
+                            <button id="edit-button" class="btn btn-warning fas fa-pen" value="<%= comment.id %>"></button>
+                            <%= link_to "", { controller: "comment", action: "delete", id: comment.id, :query => @recipe.id }, method: :delete, :class=>"btn btn-danger fas fa-times" %>
+                        </div>
+                    <% end %>
                     <h6><%= comment.user.username %></h6>
-                    <p><%= comment.comment %></p>
-                    <small><%= comment.created_at %></small>
+                    <p id="comment"><%= comment.comment %></p>
+                    <small id="create-date"><%= comment.created_at %></small>
                 </div>
             <% end %>
 		</div>
 	</div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#edit-button').click(() => {
+            value = $('#comment').text();
+            $('#comment').remove();
+            $(`<form class="mt-5 mb-5" action="/comment/${$("#edit-button").attr("value")}/modify?recipeid=<%= @recipe.id %>" method="post"><textarea class="form-control" name="edited-comment">${value}</textarea><div class="float-right"><input class="btn btn-primary mt-1 mr-2" type="submit" value="Mentés"/></div></form>`).insertBefore($('#create-date'));
+        });
+    });
+</script>

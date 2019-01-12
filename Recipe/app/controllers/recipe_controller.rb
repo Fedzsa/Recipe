@@ -26,12 +26,37 @@ class RecipeController < ApplicationController
 
         redirect_to :controller => 'user', :action => 'index'
     end
-
-    def addcomment
-        comment = Comment.new(:comment => params['comment'])
-        comment.recips << Recip.find(params[:id])
-        comment.user = current_user
-        comment.save
-        redirect_to :controller => 'recipe', :action => 'details', :id => params[:id]
+    
+    def edit
+        @recipe = Recip.find(params[:id])
     end
+
+    def modify
+        recipe = Recip.find(params[:id])
+        recipe.name = params['title']
+        recipe.description = params['description']
+        recipe.foodtype = params['type']
+        ingredients = recipe.ingredients
+
+        i = 1
+        j = 0
+        while params.has_key?("ingredient-#{i}")
+            ingredient = Ingredient.find(ingredients[j].id)
+            ingredient.name = params["ingredient-#{i}"]
+            ingredient.save
+            i+=1
+            j+=1
+        end
+
+        recipe.user = User.find(current_user.id)
+
+        recipe.save
+
+        redirect_to :controller => 'user', :action => 'index'
+	end
+	
+	def delete
+		Recip.find(params[:id]).destroy
+		redirect_to :controller => 'user', :action => 'index'
+	end
 end
