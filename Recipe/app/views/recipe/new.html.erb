@@ -1,35 +1,35 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
   <div class="row">
     <div class="col">
       <form class="" action="/recipe" method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col">
             <div class="form-group">
-              <label for="title">Cím</label>
+              <label for="title"><%= t('recipe.title') %></label>
               <input class="form-control" type="text" name="title" value="">
             </div>
             <div class="form-group">
-              <label for="type">Típus</label>
+              <label for="type"><%= t('recipe.type') %></label>
               <select class="form-control" name="type">
-                <option value="0">Előétel</option>
-                <option value="1">Főétel</option>
-                <option value="2">Köretek</option>
-                <option value="3">Sütemények</option>
+                <option value="0"><%= t('recipe.food_type_1') %></option>
+                <option value="1"><%= t('recipe.food_type_2') %></option>
+                <option value="2"><%= t('recipe.food_type_3') %></option>
+                <option value="3"><%= t('recipe.food_type_4') %></option>
               </select>
             </div>
             <div class="form-group">
-              <label for="picture">Kép</label><br>
+              <label for="picture"><%= t('recipe.picture') %></label><br>
               <input type="file" name="picture" value="">
             </div>
             <div class="form-group">
-              <label for="description">Leírás</label>
+              <label for="description"><%= t('recipe.description') %></label>
               <textarea class="form-control" name="description" rows="8" cols="80"></textarea>
             </div>
-            <input class="form-control btn btn-success" type="submit" value="Mentés" />
+            <input class="form-control btn btn-success" type="submit" value="<%= t('recipe.save') %>" />
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="">Hozzávalók</label>
+              <label for=""><%= t('recipe.ingredients') %></label>
               <input class="form-control" type="text" name="ingredient-1" value="">
             </div>
             <button id="plus-ingredient" class="btn btn-warning form-control" type="button" name="button">+</button>

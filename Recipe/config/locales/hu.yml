@@ -1,0 +1,35 @@
+hu:
+    home:
+        title: "Receptek"
+        login: "Bejelentkezés"
+        logout: "Kijelentkezés"
+        signup: "Regisztráció"
+        search_field: "Keresés..."
+        myrecipes: "Receptjeim"
+    login:
+        title: "Bejelentkezés"
+        password: "Jelszó"
+        rememberme: "Emlékezz rám"
+    signup:
+        title: "Regisztráció"
+        forgot_your_password: "Elfelejtetted a jelszavad?"
+        username: "Felhasználónév"
+        password_again: "Jelszó megerősítése"
+        character_minimum: "karakter minimum"
+    user:
+        user_recipe: " receptje"
+        new_recipe: "Új recept"
+    recipe:
+        title: "Cím"
+        type: "Típus"
+        food_type_1: "Előételek"
+        food_type_2: "Főételek"
+        food_type_3: "Köretek"
+        food_type_4: "Sütemények"
+        picture: "Kép"
+        description: "Leírás"
+        ingredients: "Hozzávalók"
+        save: "Mentés"
+    comment:
+        comment: "Hozzászólás"
+        comments: "Hozzászólások"

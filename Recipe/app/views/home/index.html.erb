@@ -9,7 +9,7 @@
 							<h5 class="card-title"><a href="/recipe/<%= recipe.id %>"><%= recipe.name %></a></h5>
 						</div>
 						<div class="card-footer">
-							<small class="text-muted"><%= recipe.user.username %> receptje</small>
+							<small class="text-muted"><%= recipe.user.username %><%= t('user.user_recipe') %></small>
 						</div>
 					</div>
 				<% end %>

@@ -2,12 +2,15 @@
 	<div class="row">
 		<div class="col"></div>
     <div class="col shadow p-5">
-      <h2>Regisztráció</h2>
+      <h2><%= t('signup.title') %></h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form" }) do |f| %>
-        <%= devise_error_messages! %>
+		<div class="field">
+			<%= devise_error_messages! %>	
+		</div>
+		
         <div class="field">
-          <%= f.label "Felhasználónév" %><br />
+          <%= f.label t('signup.username') %><br />
           <%= f.text_field :username, autofocus: true, class: "form-control" %>
         </div>
 
@@ -17,20 +20,20 @@
         </div>
 
         <div class="field">
-          <%= f.label "Jelszó" %>
+          <%= f.label t('login.password') %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> karakter minimum)</em>
+          <em>(<%= @minimum_password_length %> <%= t('signup.character_minimum') %>)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         </div>
 
         <div class="field">
-          <%= f.label "Jelszó megerősítése" %><br />
+          <%= f.label t('signup.password_again') %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Regisztráció", class: "btn btn-success form-control mt-2" %>
+          <%= f.submit t('signup.title'), class: "btn btn-success form-control mt-2" %>
         </div>
       <% end %>
 

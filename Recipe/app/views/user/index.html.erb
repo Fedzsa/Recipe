@@ -1,10 +1,10 @@
 <div class="container mt-5 mb-5">
   <div class="row shadow p-3 border rounded">
     <div class="col">
-      <h4>Receptjeim</h4>
+      <h4><%= t('home.myrecipes') %></h4>
     </div>
     <div class="col">
-      <%= link_to "Új recept", { controller: "recipe", action: "new" }, :class=>"btn btn-success float-right" %>
+      <%= link_to t('user.new_recipe'), { controller: "recipe", action: "new" }, :class=>"btn btn-success float-right" %>
     </div>
   </div>
   <div class="row mt-5">
@@ -18,7 +18,7 @@
             <h5 class="card-title"><a href="/recipe/<%= recipe.id %>"><%= recipe.name %></a></h5>
           </div>
           <div class="card-footer">
-            <small class="text-muted"><%= recipe.user.username %> receptje</small>
+            <small class="text-muted"><%= recipe.user.username %><%= t('user.user_recipe') %></small>
             <div class="float-right">
               <%= link_to "", { controller: "recipe", action: "edit", id: recipe.id }, :class=>"btn btn-warning fas fa-pen" %>
               <%= link_to "", { controller: "recipe", action: "delete", id: recipe.id }, method: :delete, :class=>"btn btn-danger fas fa-times" %>

@@ -16,32 +16,32 @@
     <header class="container-fluid shadow navbar-dark bg-dark">
       <div class="row align-items-center">
         <div class="col">
-          <h1><a class="home-link" href="/">Receptek</a></h1>
+          <h1><a class="home-link" href="/"><%= t('home.title') %></a></h1>
         </div>
         <div class="col">
           <form class="form-inline search-form" action="/" method="get">
-            <input class="search-input form-control" type="text" name="search" placeholder="Keresés..."/>
+            <input class="search-input form-control" type="text" name="search" placeholder="<%= t('home.search_field') %>"/>
             <button class="search-btn btn btn-success" type="button"><i class="fas fa-search"></i></button>
           </form>
         </div>
         <div class="col">
           <div class="float-right">
             <% if !user_signed_in? %>
-              <%= link_to "Bejelentkezés", { controller: "devise/sessions", action: "new" }, :class=>"btn btn-outline-primary" %>
-              <%= link_to "Regisztráció", { controller: "devise/registrations", action: "new"}, :class=>"btn btn-outline-primary" %>
+              <%= link_to t('home.login'), { controller: "devise/sessions", action: "new" }, :class=>"btn btn-outline-primary" %>
+              <%= link_to t('home.signup'), { controller: "devise/registrations", action: "new"}, :class=>"btn btn-outline-primary" %>
             <% else %>
-              <%= link_to("Receptjeim", { controller: "user", action: "index" }, :class=>"btn btn-outline-primary") %>
-              <%= link_to("Kijelentkezés", { controller: "devise/sessions", action: "destroy" }, method: :delete, :class=>"btn btn-outline-primary") %>
+              <%= link_to(t('home.myrecipes'), { controller: "user", action: "index" }, :class=>"btn btn-outline-primary") %>
+              <%= link_to(t('home.logout'), { controller: "devise/sessions", action: "destroy" }, method: :delete, :class=>"btn btn-outline-primary") %>
             <% end %>
           </div>
         </div>
       </div>
     </header>
     <div class="nav">
-      <a href="/?type=0">Előételek</a>
-      <a href="/?type=1">Főételek</a>
-      <a href="/?type=2">Köretek</a>
-      <a href="/?type=3">Sütemények</a>
+      <a href="/?type=0"><%= t('recipe.food_type_1') %></a>
+      <a href="/?type=1"><%= t('recipe.food_type_2') %></a>
+      <a href="/?type=2"><%= t('recipe.food_type_3') %></a>
+      <a href="/?type=3"><%= t('recipe.food_type_4') %></a>
     </div>
     <%= yield %>
     

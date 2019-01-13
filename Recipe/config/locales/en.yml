@@ -30,4 +30,37 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  home:
+    title: "Recipes"
+    login: "Login"
+    logout: "Logout"
+    signup: "Signup"
+    search_field: "Search..."
+    myrecipes: "My recipes"
+  login:
+    title: "Login"
+    password: "Password"
+    rememberme: "Remember me"
+  signup:
+    title: "Signup"
+    forgot_your_password: "Forgot your password?"
+    username: "Username"
+    password_again: "Password again"
+    character_minimum: "character minimum"
+  user:
+    user_recipe: "'s recipe"
+    new_recipe: "New recipe"
+  recipe:
+    title: "Title"
+    type: "Type"
+    food_type_1: "Appetizers"
+    food_type_2: "Main courses"
+    food_type_3: "Garnishes"
+    food_type_4: "Cakes"
+    picture: "Picture"
+    description: "Description"
+    ingredients: "Ingredients"
+    save: "Save"
+  comment:
+    comment: "Comment"
+    comments: "Comments"

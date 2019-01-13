@@ -5,7 +5,7 @@
             <%= image_tag @recipe.image.url %>
         </div>
         <div class="col">
-            <h5>Hozzávalók</h5>
+            <h5><%= t('recipe.ingredients') %></h5>
             <ul>
                 <% @recipe.ingredients.each do |ingredient| %>
                     <li><%= ingredient.name %></li>
@@ -15,14 +15,14 @@
     </div>
     <div class="row">
         <div class="col">
-            <h5>Leírás</h5>
+            <h5><%= t('recipe.description') %></h5>
             <p><%= @recipe.description %></p>
         </div>
     </div>
 
     <div class="row mt-5">
 		<div class="col">
-			<h3>Kommentek</h3>
+			<h3><%= t('comment.comments') %></h3>
 		</div>
 	</div>
 
@@ -30,35 +30,39 @@
 		<div class="col">
 			<form action="/recipe/<%= @recipe.id %>/comment" method="post">
                 <textarea class="form-control" name="comment"></textarea>
-                <input class="btn btn-primary mt-1 float-right" type="submit" value="Komment"/>
+                <input class="btn btn-primary mt-1 float-right" type="submit" value="<%= t('comment.comment') %>"/>
 			</form>
 		</div>
     </div>
     
     <div class="row mt-5">
         <div class="col">
+			<% i = 0 %>
             <% @recipe.comments.each do |comment| %>
                 <div class="shadow p-3">
-                    <% if current_user.id == @recipe.user.id %>
+                    <% if current_user.id == comment.user.id %>
                         <div class="float-right">
-                            <button id="edit-button" class="btn btn-warning fas fa-pen" value="<%= comment.id %>"></button>
+                            <button id="edit-button-<%= i %>" class="btn btn-warning fas fa-pen" value="<%= comment.id %>" index="<%= i %>"></button>
                             <%= link_to "", { controller: "comment", action: "delete", id: comment.id, :query => @recipe.id }, method: :delete, :class=>"btn btn-danger fas fa-times" %>
                         </div>
                     <% end %>
                     <h6><%= comment.user.username %></h6>
-                    <p id="comment"><%= comment.comment %></p>
-                    <small id="create-date"><%= comment.created_at %></small>
+                    <p id="comment-<%= i %>"><%= comment.comment %></p>
+                    <small id="create-date-<%= i %>"><%= comment.created_at %></small>
                 </div>
-            <% end %>
+            <% i+=1 end %>
 		</div>
 	</div>
 </div>
 <script>
     $(document).ready(function() {
-        $('#edit-button').click(() => {
-            value = $('#comment').text();
-            $('#comment').remove();
-            $(`<form class="mt-5 mb-5" action="/comment/${$("#edit-button").attr("value")}/modify?recipeid=<%= @recipe.id %>" method="post"><textarea class="form-control" name="edited-comment">${value}</textarea><div class="float-right"><input class="btn btn-primary mt-1 mr-2" type="submit" value="Mentés"/></div></form>`).insertBefore($('#create-date'));
-        });
+		<% i.times do |j| %>
+			$(`#edit-button-<%= j %>`).click(() => {
+				value = $(`#comment-<%= j %>`).text();
+				index = $(`#edit-button-<%= j %>`).attr("index");
+				$(`#comment-<%= j %>`).remove();
+				$(`<form class="mt-5 mb-5" action="/comment/${$("#edit-button-<%= j %>").attr("value")}/modify?recipeid=<%= @recipe.id %>" method="post"><textarea class="form-control" name="edited-comment">${value}</textarea><div class="float-right"><input class="btn btn-primary mt-1 mr-2" type="submit" value="<%= t('recipe.save') %>"/></div></form>`).insertBefore($(`#create-date-${index}`));
+			});
+		<% end %>
     });
 </script>
